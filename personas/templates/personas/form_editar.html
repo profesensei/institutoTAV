@@ -1,0 +1,53 @@
+{% extends "personas/base.html" %}
+
+{% block title %} CRUD Alumno  {% endblock %}
+
+{% block content%}
+
+{% load static %}
+
+        <br><br>
+    <form action="/personas/actualizar" method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="id_alumno" value="{{alumno.id_alumno}}">
+        <label>Rut      :</label><input type="text" name="rut" value="{{alumno.rut}}" readonly><br>
+        <label>Nombre   :</label><input type="text" name="nombre"  value="{{alumno.nombre}}"><br>
+        <label>A.Paterno:</label><input type="text" name="aPaterno"  value="{{alumno.apellido_paterno}}" ><br>
+        <label>A.Materno:</label><input type="text" name="aMaterno" value="{{alumno.apellido_materno}}" ><br>
+        <label>Fecha Nac:</label><input type="date" name="fechaNac"  value="{{alumno.fecha_nacimiento | date:'Y-m-d'}}"><br>
+         <label>Género   :</label>
+         <select name="genero">
+             <option value="Seleccionar" disabled>Seleccionar</option>
+             {% if  alumno.genero == "masculino"   %}
+                  <option value="masculino" selected>Masculino</option>
+             {% else%}
+                  <option value="masculino">Masculino</option>
+             {% endif %}
+
+             {% if  alumno.genero == "femenino"   %}
+                 <option value="femenino" selected>Femenino</option>
+             {% else %}
+                 <option value="femenino">Femenino</option>
+             {% endif %}
+
+
+
+         </select>
+         <br>
+         <label>Foto     :</label><input type="file" name="foto" src="{% static alumno.foto %}">
+
+              {% if alumno.foto %}
+                  <tr><td><p>{{alumno.foto.url }}</p></td></tr>
+                  <tr><td><p><img src="{% static alumno.foto %}"></p></td></tr>
+              {% endif %}
+
+
+        <br><br>
+
+        <input type="submit" name="opcion" value="Actualizar">
+        <input type="submit" name="opcion" value="Cancelar">
+    </form>
+
+</tr>
+
+{% endblock %}

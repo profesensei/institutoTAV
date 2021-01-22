@@ -1,0 +1,46 @@
+{% extends "personas/base.html" %}
+
+{% block title %} Editar Alumnos  {% endblock %}
+
+{% block content%}
+   {% load static %}
+    <div class="container">
+          <br><br><br>
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>Rut</th>
+                      <th>Nombre</th>
+                      <th>Apellido Paterno</th>
+                      <th>Apellido Materno</th>
+                      <th>Género</th>
+                      <th>Editar</th>
+                      <th>Eliminar</th>
+                  </tr>
+              </thead>
+
+              <tbody>
+                  {% for  obj in alumno %}
+                      <tr>
+                          <td>{{ obj.rut }}</td>
+                          <td>{{ obj.nombre }}</td>
+                          <td>{{ obj.apellido_paterno }}</td>
+                          <td>{{ obj.apellido_materno }}</td>
+                          <td>{{ obj.genero }}</td>
+                          <td> <a href="{% url 'form_editar' pk=obj.id_alumno %}">Editar </a></td>
+                          <td> <a href="{% url 'form_eliminar' pk=obj.id_alumno %}">Eliminar </a></td>
+
+                      </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+
+          <br><br><br>
+          <!-- <a href="crud_alumno">Volver</a> -->
+
+          <a href="{% url 'crud_alumno' %}">Volver</a>
+    </div>
+
+
+{% endblock %}
+
