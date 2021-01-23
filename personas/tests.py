@@ -1,6 +1,4 @@
-from django.test import TestCase
 
-# Create your tests here.
 import unittest
 from personas.models import Alumno
 
@@ -10,10 +8,10 @@ from personas.models import Alumno
 
 
 class testAlumno(unittest.TestCase):
-    '''
+
     def test_crear_objeto(self):
         alumno = Alumno.objects.create(fecha_nacimiento='2020-10-23',
-                                       rut='10-4',
+                                       rut='10-5',
                                        nombre='Susana',
                                        apellido_paterno='Correa',
                                        apellido_materno='Lopez',
@@ -23,12 +21,12 @@ class testAlumno(unittest.TestCase):
         alumno.save()
 
         self.assertTrue(alumno,True)
-    '''
+
 
     def test_val_rut(self):
-        alumno = Alumno.objects.get( rut = '10-4')
+        alumno = Alumno.objects.get( rut = '1-1')
         #programar, validad, if,
-        self.assertEquals(alumno.rut, '10-4')
+        self.assertEquals(alumno.nombre, 'Susana')
 
 
     def test_crear_demo(self):

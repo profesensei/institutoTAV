@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from .models import Alumno
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required
 def index(request):
     print("hola, estoy en el index")
 
@@ -73,7 +75,8 @@ def agregar_alumno(request):
 
                 #select * from alumno
                 alumno= Alumno.objects.all()
-
+                #alumno = Alumno.objects.filter(activo = 1)
+                #alumno = Alumno.objects.filter(activo=1, genero='femenino')
                 context = { 'alumno':alumno }
 
                 return render(request, 'personas/editar_alumnos.html', context)

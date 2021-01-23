@@ -4,7 +4,7 @@
 
 {% block content%}
 
-{% load static %}
+  {% load static %}
 
         <br><br>
     <form action="/personas/actualizar" method="POST"  enctype="multipart/form-data">
@@ -33,6 +33,7 @@
 
 
          </select>
+
          <br>
          <label>Foto     :</label><input type="file" name="foto" src="{% static alumno.foto %}">
 

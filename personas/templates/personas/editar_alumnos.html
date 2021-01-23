@@ -4,6 +4,7 @@
 
 {% block content%}
    {% load static %}
+
     <div class="container">
           <br><br><br>
           <table class="table table-striped">
@@ -14,6 +15,7 @@
                       <th>Apellido Paterno</th>
                       <th>Apellido Materno</th>
                       <th>Género</th>
+                      <th>Foto</th>
                       <th>Editar</th>
                       <th>Eliminar</th>
                   </tr>
@@ -27,6 +29,7 @@
                           <td>{{ obj.apellido_paterno }}</td>
                           <td>{{ obj.apellido_materno }}</td>
                           <td>{{ obj.genero }}</td>
+                          <td><p><img src="{% static obj.foto %}" width="50" height="70" ></p></td>
                           <td> <a href="{% url 'form_editar' pk=obj.id_alumno %}">Editar </a></td>
                           <td> <a href="{% url 'form_eliminar' pk=obj.id_alumno %}">Eliminar </a></td>
 
